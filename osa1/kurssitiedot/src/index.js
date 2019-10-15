@@ -5,17 +5,30 @@ const App = () => {
     const course = 'Half Stack application development'
     const partList = ['Fundamentals of React', 'Using props to pass data', 'State of a component']
     const exerciseList =[10, 7, 14]
+    const part1 = {
+        name: 'Fundamentals of React',
+        exercises: 10
+    }
+    const part2 = {
+        name: 'Using props to pass data',
+        exercises: 7
+    }
+    const part3 = {
+        name: 'State of a component',
+        exercises: 14
+    }
 
     return (
         <div>
             <Header name={course}/>
-            <Content ContentParts={partList} ContentExercises={exerciseList}/>
-            <Total exerciseSum={exerciseList}/>
+            <Content Content1={part1.name + " " + part1.exercises} Content2={part2.name + " "+ part2.exercises} Content3={part3.name + " "+ part3.exercises}/>
+            <Total exerciseSum={part1.exercises + part2.exercises + part3.exercises} />
         </div>
     )
 }
 
 const Header = (props) => {
+
     return (
         <div>
             <h1>{props.name}</h1>
@@ -24,24 +37,27 @@ const Header = (props) => {
 }
 
 const Content = (props) => {
+
     return (
         <div>
-            <Part PartParts={props.ContentParts[0]} PartExercises={props.ContentExercises[0]} />
-            <Part PartParts={props.ContentParts[1]} PartExercises={props.ContentExercises[1]} />
-            <Part PartParts={props.ContentParts[2]} PartExercises={props.ContentExercises[2]} />
+            <Part PartParts={props.Content1} />
+            <Part PartParts={props.Content2} />
+            <Part PartParts={props.Content3} />
         </div>
     )
 }
 
 const Total = (props) => {
+    console.log(props)
     return (
         <div>
-            <p>Number of exercises {props.exerciseSum[0] + props.exerciseSum[1] + props.exerciseSum[2]}</p>
+            <p>Number of exercises {props.exerciseSum}</p>
         </div>
     )
 }
 
 const Part = (props) => {
+
     return (
         <div>
             <p> {props.PartParts} {props.PartExercises} </p>
