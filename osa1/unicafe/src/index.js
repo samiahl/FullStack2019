@@ -14,7 +14,12 @@ const Statistics = (props) => {
     console.log(props)
     const avg = (props.avg / props.allClicks)
     const pos = (props.good / props.allClicks) * 100
-    console.log(avg)
+
+    if (props.allClicks === 0) {
+        return (
+            <div>No feedback given.</div>
+        )
+    }
     return (
         <div>
             <div>Good: {props.good}</div>
