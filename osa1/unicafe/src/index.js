@@ -10,6 +10,21 @@ const Button = (props) => {
     )
 }
 
+const Statistic = ({text, value}) => {
+    if (text === 'Positive') {
+        return (
+            <div>
+                {text}: {value} %
+            </div>
+        )
+    }
+    return (
+        <div>
+            {text}: {value}
+        </div>
+    )
+}
+
 const Statistics = (props) => {
     console.log(props)
     const avg = (props.avg / props.allClicks)
@@ -22,12 +37,12 @@ const Statistics = (props) => {
     }
     return (
         <div>
-            <div>Good: {props.good}</div>
-            <div>Neutral: {props.neutral}</div>
-            <div>Bad: {props.bad}</div>
-            <div>All: {props.allClicks}</div>
-            <div>Average: {avg}</div>
-            <div>Positive: {pos} %</div>
+            <Statistic text="Good" value={props.good}/>
+            <Statistic text="Neutral" value={props.neutra}/>
+            <Statistic text="Bad" value={props.bad}/>
+            <Statistic text="All" value={props.allClicks}/>
+            <Statistic text="Avgerage" value={avg}/>
+            <Statistic text="Positive" value={pos}/>
         </div>
     )
 }
@@ -62,13 +77,10 @@ const App = () => {
             <Button onClick={handleGoodClick} text='good'/>
             <Button onClick={handleNeutralClick} text='neutral'/>
             <Button onClick={handleBadClick} text='bad'/>
-
             <h2>Statistics</h2>
             <Statistics good={good} neutral={neutral} bad={bad} allClicks={allClicks} avg={avg}/>
-
         </div>
         )
-
 }
 
 ReactDOM.render(
