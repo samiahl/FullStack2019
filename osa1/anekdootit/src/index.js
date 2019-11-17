@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 
-const Button = ({handleClick, text}) => {
+const Button = ({onClick, text}) => {
     return (
-        <button onClick={handleClick}>{text}</button>
+        <button onClick={onClick}>{text}</button>
     )
 }
 
@@ -17,10 +17,15 @@ const Anecdote = (props) => {
 const App = (props) => {
     const [selected, setSelected] = useState(0)
 
+    const handleRandomClick = () => {
+        const nro = anecdotes.length
+        setSelected(Math.floor(Math.random() * Math.floor(nro)))
+    }
+
     return (
         <div>
             <Anecdote anecdote={props.anecdotes[selected]}/>
-            <Button handleClick={() => setSelected(Math.floor(Math.random() * Math.floor(anecdotes.length)))} text='next anecdote'/>
+            <Button onClick={handleRandomClick} text='next anecdote'/>
         </div>
     )
 }
