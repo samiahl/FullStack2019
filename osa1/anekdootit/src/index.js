@@ -12,8 +12,14 @@ const Anecdote = (props) => {
     return (
         <div>
             <div>{props.anecdote}</div>
-            <div>Has {props.votes} votes</div>
+            <p>Has {props.votes} votes</p>
         </div>
+    )
+}
+
+const Header = ({text}) => {
+    return (
+        <h2>{text}</h2>
     )
 }
 
@@ -37,9 +43,12 @@ const App = (props) => {
 
     return (
         <div>
+            <Header text='Anecdote of the day'/>
             <Anecdote anecdote={props.anecdotes[selected]} votes={votes[selected]}/>
             <Button onClick={handleVoteClick(selected)} text='vote' />
             <Button onClick={handleRandomClick} text='next anecdote'/>
+            <Header text='Anecdote with the most votes'/>
+            <Anecdote anecdote={anecdotes[votes.indexOf(Math.max(...votes))]} votes={votes[votes.indexOf(Math.max(...votes))]}/>
         </div>
     )
 }
