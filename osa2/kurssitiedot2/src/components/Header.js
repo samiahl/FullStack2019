@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Header = ({course}) => {
-    console.log('Header log ----', course.name)
+const Header = ({name}) => {
+    console.log('Header log ----', name)
     return (
         <div>
-            <h1>{course.name}</h1>
+            <h2>{name}</h2>
         </div>
     )
 }
-
 export default Header;

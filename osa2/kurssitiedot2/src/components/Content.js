@@ -1,10 +1,10 @@
 import React from 'react'
 import Part from './Part'
 
-const Content = ({course}) => {
-    console.log('Content log ----', course.parts[0].name)
+const Content = ({parts}) => {
+    console.log('Content log ----', parts)
 
-    const parts = () => course.parts.map(part =>
+    const partList = () => parts.map(part =>
         <Part
             key={part.id}
             part={part}
@@ -13,7 +13,7 @@ const Content = ({course}) => {
 
     return (
         <div>
-            {parts()}
+            {partList()}
         </div>
     )
 }
